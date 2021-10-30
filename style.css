@@ -17,20 +17,24 @@ body {
   display: flex;
   padding-top: 100px;
   margin: 50px auto;
-  border: 1px solid #1b1b1b;
+  border: 10px ridge #818181b7;
+  border-radius: 50px;
+  background-color: #143514;
   width: 750px;
   height: 550px;
   position: relative;
+  -webkit-box-shadow: 5px 14px 26px 7px rgba(0, 0, 0, 0.74);
+  box-shadow: 5px 14px 26px 7px rgba(0, 0, 0, 0.74);
 }
 
 #game-table .carte {
   width: 180px;
   height: 290px;
-  border: 1px solid #1b1b1b;
+  border: 2px solid #b9a700;
   position: absolute;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  background-color: #000;
+  background-color: #1b1b1b;
   background-repeat: no-repeat;
   background-position: center;
   color: white;
@@ -40,6 +44,8 @@ body {
 #game-table p {
   position: absolute;
   top: 20px;
+  left: 20px;
+  color: #fff;
 }
 
 .transition {
@@ -47,6 +53,7 @@ body {
           transform: scale(1.2);
   -webkit-box-shadow: 5px 14px 26px 7px rgba(0, 0, 0, 0.74);
   box-shadow: 5px 14px 26px 7px rgba(0, 0, 0, 0.74);
+  z-index: 100;
 }
 
 .animation {

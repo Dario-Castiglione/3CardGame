@@ -24,7 +24,7 @@ function change(){
 
  cards[randomArray[0]].classList.add ('transition')
  cards[randomArray[1]].classList.add ('transition')
-//return randomArray;
+
 
 setTimeout( () => {
      //console.log(randomArray[0])
@@ -56,7 +56,7 @@ function startChange(){
         winCard.style.transform = "",
         winCard.style.backgroundImage = "url('re_coppe.jpg')",
         score++;
-        else round = 2;       
+        else round = 2, score = 0;       
     } 
     console.log(round)
     winCard.style.transform = ""
