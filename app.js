@@ -82,19 +82,30 @@ const validate=()=>{
 
 
     const conditionWin = (event) =>{
-        const scoreSpan = document.querySelector("#score")
+        const span = document.querySelectorAll("span")
         if (event.target === winCard) {
             winCard.style.transform = "";
             winCard.style.backgroundImage = "url('re_coppe.jpg')";
             for (x of cards) x.removeEventListener("click",conditionWin)
             //round = round++ ;
-             console.log(round)
+             console.log(round);
+             //span[0].innerText = timer;
              setTimeout(()=>{start()},500);
+        }
+        else{
+            timer = 400;
+            cards[0].style.transform = "";
+            event.target.style.transform = "rotatey(180deg)",
+            winCard.style.backgroundImage = "url('re_coppe.jpg')";
+            setTimeout(()=>{start()},1500);
+            setTimeout(()=>{event.target.style.transform = "";},1500);
+            
         }
 
 
         
-        scoreSpan.innerText = timer;
+       span[0].innerText = timer;
+       
     }
 
 
@@ -118,10 +129,11 @@ const start = () =>{
     cards[0].style.transform = "rotatey(180deg)"
     cards[0].style.backgroundImage = ""
     timer = timer + 600;
+    
 
     validate()
 
     setTimeout(() => {clearInterval(starter);}, timer);
       
 }
-setTimeout(()=>{start()},500);
+setTimeout(()=>{start()},1200);
