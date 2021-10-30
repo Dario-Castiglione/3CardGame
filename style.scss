@@ -26,7 +26,21 @@ $width: 200px;
     border: 1px solid black;
     position: absolute;
     transition: all 0.3s ease-out;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   .transition{
-      transform: scale(1.1);
+      transform: scale(1.2);
+      -webkit-box-shadow: 5px 14px 26px 7px rgba(0,0,0,0.74); 
+        box-shadow: 5px 14px 26px 7px rgba(0,0,0,0.74);
+  }
+  .animation{
+      transform: translateY(180deg);
+      background: #000;
+  }
+  button{
+      display: block;
+      margin: 0 auto;
+      padding: 10px;
   }
