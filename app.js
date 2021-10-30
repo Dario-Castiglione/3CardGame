@@ -37,14 +37,16 @@ setTimeout( () => {
 
 }
 
+
 let round = 2;
-let score = 1;
+let score = 0;
 let winCard = cards[0];
 let roundTime = 300;
 winCard.style.backgroundImage = "url('re_coppe.jpg')";
+const scoreSpan = document.querySelector("#score")
 function startChange(){ 
     
-    const starter = setInterval(function(){ change(); }, 600);   
+    const starter = setInterval(function(){ change(); }, 300);   
     roundTime = roundTime * round;
     setTimeout(() => {clearInterval(starter)}, roundTime);
     console.log(roundTime)
@@ -52,13 +54,14 @@ function startChange(){
     function win(event){
         if (event.target === winCard) round = round + 0.5 ,
         winCard.style.transform = "",
-        winCard.style.backgroundImage = "url('re_coppe.jpg')";
+        winCard.style.backgroundImage = "url('re_coppe.jpg')",
+        score++;
         else round = 2;       
     } 
     console.log(round)
     winCard.style.transform = ""
     for (x of cards) x.addEventListener("click",win)
-    
+    scoreSpan.innerText = score;
 }
 const start = () => {
     startChange()
@@ -66,4 +69,3 @@ const start = () => {
     winCard.style.backgroundImage = "";
 }
 Btn[0].addEventListener("click",start)   
-
