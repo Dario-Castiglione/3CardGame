@@ -37,8 +37,8 @@ setTimeout( () => {
 
 }
 
-
-let round = 2;
+/*
+let round = 1;
 let score = 0;
 let winCard = cards[0];
 let roundTime = 300;
@@ -46,26 +46,82 @@ winCard.style.backgroundImage = "url('re_coppe.jpg')";
 const scoreSpan = document.querySelector("#score")
 function startChange(){ 
     
-    const starter = setInterval(function(){ change(); }, 300);   
     roundTime = roundTime * round;
+    const starter = setInterval(function(){ change(); }, 300);  
     setTimeout(() => {clearInterval(starter)}, roundTime);
+
     console.log(roundTime)
     roundTime = 300;
+
     function win(event){
-        if (event.target === winCard) round = round + 0.5 ,
+
+        if (event.target === winCard) round++,
         winCard.style.transform = "",
         winCard.style.backgroundImage = "url('re_coppe.jpg')",
         score++;
-        else round = 2, score = 0;       
+        else round = 0, score = 0;       
+    
     } 
+
+    for (x of cards) x.addEventListener("click",win)
     console.log(round)
     winCard.style.transform = ""
-    for (x of cards) x.addEventListener("click",win)
     scoreSpan.innerText = score;
 }
+
 const start = () => {
     startChange()
     winCard.style.transform = "rotatey(180deg)"
     winCard.style.backgroundImage = "";
 }
-Btn[0].addEventListener("click",start)   
+*/
+
+
+const validate=()=>{
+    //round= 2;
+
+
+    const conditionWin = (event) =>{
+        const scoreSpan = document.querySelector("#score")
+        if (event.target === winCard) {
+            winCard.style.transform = "";
+            winCard.style.backgroundImage = "url('re_coppe.jpg')";
+            for (x of cards) x.removeEventListener("click",conditionWin)
+            //round = round++ ;
+             console.log(round)
+             setTimeout(()=>{start()},500);
+        }
+
+
+        
+        scoreSpan.innerText = timer;
+    }
+
+
+   for (x of cards) x.addEventListener("click",conditionWin)
+      
+
+
+
+       //round++, console.log(round)
+    //console.log(score)
+}
+
+
+let round = 2;
+let timer = 400;
+let winCard = cards[0];
+winCard.style.backgroundImage = "url('re_coppe.jpg')";
+const start = () =>{
+    //Btn[0].removeEventListener("click",start);  
+    const starter = setInterval(() => {change()}, 300);
+    cards[0].style.transform = "rotatey(180deg)"
+    cards[0].style.backgroundImage = ""
+    timer = timer + 600;
+
+    validate()
+
+    setTimeout(() => {clearInterval(starter);}, timer);
+      
+}
+setTimeout(()=>{start()},500);
