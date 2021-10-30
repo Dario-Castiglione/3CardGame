@@ -1,5 +1,5 @@
-let cards = document.querySelectorAll('.carte');
-
+const cards = document.querySelectorAll('.carte');
+const Btn = document.querySelectorAll("button")
 cards[0].style.left = "20px"
 cards[1].style.left = "270px"
 cards[2].style.left = "520px"
@@ -8,16 +8,15 @@ cards[2].style.left = "520px"
 
 
 
-
+let randomArray = [];
 let position1;
 let position2;
-function change(){ 
-    let randomArray = [];   
+function change(){    
     for (let i = 0; i < 2; i++){
     let randomNum = Math.floor(Math.random() * 3)
     if (randomArray[i-1] != randomNum){
     randomArray.push(randomNum);
-    console.log(randomArray);}
+    ;}
    else {i--};
 }
  position1  = cards[randomArray[0]].style.left
@@ -25,16 +24,39 @@ function change(){
 
  cards[randomArray[0]].classList.add ('transition')
  cards[randomArray[1]].classList.add ('transition')
+//return randomArray;
 
-
-//setTimeout( () => {
-     console.log(randomArray[0])
+setTimeout( () => {
+     //console.log(randomArray[0])
      cards[randomArray[0]].style.left = position2
-     cards[randomArray[1]].style.left = position1   
-//}, 100)
+     cards[randomArray[1]].style.left = position1  
+     cards[randomArray[0]].classList.remove ('transition')
+     cards[randomArray[1]].classList.remove ('transition') 
+     randomArray = [];
+}, 200)
 
-randomArray = [];
-console.log(randomArray)
 }
-document.addEventListener("click",change)   
-//change()
+
+let round = 2;
+let score = 1;
+let winCard = cards[0];
+let roundTime = 300;
+function start(){
+    const starter = setInterval(function(){ change(); }, 300);
+    
+    roundTime = roundTime * round;
+    setTimeout(() => {clearInterval(starter)}, roundTime);
+    console.log(roundTime)
+    roundTime = 300;
+
+    function win(event){
+        if (event.target === winCard) round = round + 0.5 ;
+        else round = 2;       
+    } 
+    console.log(round)
+    
+    for (x of cards) x.addEventListener("click",win)
+}
+
+Btn[0].addEventListener("click",start)   
+
