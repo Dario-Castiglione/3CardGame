@@ -6,8 +6,6 @@ cards[2].style.left = "520px"
 
 
 
-
-
 let randomArray = [];
 let position1;
 let position2;
@@ -37,49 +35,7 @@ setTimeout( () => {
 
 }
 
-/*
-let round = 1;
-let score = 0;
-let winCard = cards[0];
-let roundTime = 300;
-winCard.style.backgroundImage = "url('re_coppe.jpg')";
-const scoreSpan = document.querySelector("#score")
-function startChange(){ 
-    
-    roundTime = roundTime * round;
-    const starter = setInterval(function(){ change(); }, 300);  
-    setTimeout(() => {clearInterval(starter)}, roundTime);
-
-    console.log(roundTime)
-    roundTime = 300;
-
-    function win(event){
-
-        if (event.target === winCard) round++,
-        winCard.style.transform = "",
-        winCard.style.backgroundImage = "url('re_coppe.jpg')",
-        score++;
-        else round = 0, score = 0;       
-    
-    } 
-
-    for (x of cards) x.addEventListener("click",win)
-    console.log(round)
-    winCard.style.transform = ""
-    scoreSpan.innerText = score;
-}
-
-const start = () => {
-    startChange()
-    winCard.style.transform = "rotatey(180deg)"
-    winCard.style.backgroundImage = "";
-}
-*/
-
-
 const validate=()=>{
-    //round= 2;
-
 
     const conditionWin = (event) =>{
         const span = document.querySelectorAll("span")
@@ -101,23 +57,14 @@ const validate=()=>{
             setTimeout(()=>{event.target.style.transform = "";},1500);
             
         }
-
-
-        
+  
        span[0].innerText = timer;
        
     }
 
 
-   for (x of cards) x.addEventListener("click",conditionWin)
-      
-
-
-
-       //round++, console.log(round)
-    //console.log(score)
+   for (x of cards) x.addEventListener("click",conditionWin)      
 }
-
 
 let round = 2;
 let timer = 400;
@@ -133,7 +80,6 @@ const start = () =>{
 
     validate()
 
-    setTimeout(() => {clearInterval(starter);}, timer);
-      
+    setTimeout(() => {clearInterval(starter);}, timer);      
 }
 setTimeout(()=>{start()},1200);
