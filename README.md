@@ -1,5 +1,5 @@
 # 3CardGame
 
-<a href="dario-castiglione.github.io/3cardgame/>Preview</a>
+<a href="https://dario-castiglione.github.io/3CardGame/>Preview</a>
 </br>
 
